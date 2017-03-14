@@ -1,0 +1,93 @@
+body, div, p, span, ol, ul, li, h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.player1Background {
+  background-color: darkblue!important;
+}
+.player2Background {
+  background-color: darkred!important;
+}
+.player1Text {
+  color: darkblue!important;
+}
+.player2Text {
+  color: darkred!important;
+}
+
+.playerName {
+  font-style: italic;
+}
+
+.gameRegion {
+  position: relative;
+  float: left;
+  margin: 20px 0 0 20px;
+}
+
+.board {
+}
+
+.gameInfo {
+}
+
+.column {
+  position: relative;
+  width: 80px;
+  float:left;
+}
+
+.tile {
+  position: relative;
+  height: 80px;
+  background-color: rgb(199,176,72);
+}
+
+.hole {
+  content: '';
+   display: inline-block;
+   position:relative;
+   width: 86%;
+   height: 86%;
+   left: 7%;
+   top: 7%;
+   -moz-border-radius: 50%;
+   -webkit-border-radius: 50%;
+   border-radius: 50%;
+   background-color: white;
+}
+
+.unwinningTile .hole {
+  background-color: lightgray;
+}
+
+.unwinningTile .hole.player1Background, .unwinningTile .hole.player2Background {
+  opacity: .5;
+}
+
+.winningTile .hole {
+  border: 3px solid yellow;
+}
+
+.playerNameInputArea {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.restartButton {
+  font-size: 18px;
+}
+
+.currentPlayer {
+  margin-top: 30px;
+}
+
+.victoryText {
+  margin-top: 30px;
+}
