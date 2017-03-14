@@ -5,7 +5,7 @@ import Column from 'Components/Board/Column';
 
 function Board(props) {
     return (
-        <div className="gameInfo board">
+        <div className="gameRegion board">
             <Column />
             <Column />
             <Column />
