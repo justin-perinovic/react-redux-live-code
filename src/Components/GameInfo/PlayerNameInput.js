@@ -3,10 +3,10 @@ import React from 'react';
 
 function PlayerNameText(props) {
     return (
-        <div className="playerNameInputArea">
+        <div className="inputArea">
             <span>Player {props.playerNumber} Name:</span>
             &nbsp;
-            <input type="text" value={props.playerName} />
+            <input type="text" defaultValue={props.playerName} />
         </div>
     )
 }

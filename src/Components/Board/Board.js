@@ -14,6 +14,7 @@ function Board(props) {
             <Column />
             <Column />
             <Column />
+            <Column />
         </div>
     );
 }

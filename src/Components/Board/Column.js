@@ -9,9 +9,9 @@ function Column(props) {
             <Tile wasWinningTile={true} />
             <Tile wasWinningTile={false} />
             <Tile />
-            <Tile wasWinningTile={false} owningPlayerNumber={1} />
             <Tile wasWinningTile={true} owningPlayerNumber={1} />
-            <Tile owningPlayerNumber={1} />
+            <Tile wasWinningTile={false} owningPlayerNumber={2} />
+            <Tile owningPlayerNumber={2} />
         </div>
     );
 }

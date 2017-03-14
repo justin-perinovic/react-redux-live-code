@@ -67,15 +67,18 @@ body, div, p, span, ol, ul, li, h1, h2, h3, h4, h5, h6 {
   background-color: lightgray;
 }
 
-.unwinningTile .hole.player1Background, .unwinningTile .hole.player2Background {
-  opacity: .6;
+.unwinningTile .hole.player1Background {
+  opacity: .5;
+}
+.unwinningTile .hole.player2Background {
+  opacity: .4;
 }
 
 .winningTile .hole {
   border: 3px solid yellow;
 }
 
-.playerNameInputArea {
+.inputArea {
   margin-bottom: 10px;
   font-size: 18px;
 }
