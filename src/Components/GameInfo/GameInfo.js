@@ -3,6 +3,7 @@ import React from 'react';
 import PlayerNameInput from 'Components/GameInfo/PlayerNameInput';
 import ColumnCountInput from 'Components/GameInfo/ColumnCountInput';
 import RowCountInput from 'Components/GameInfo/RowCountInput';
+import NumberInARowInput from 'Components/GameInfo/NumberInARowInput';
 import RestartButton from 'Components/GameInfo/RestartButton';
 import VictoryText from 'Components/GameInfo/VictoryText';
 import CurrentPlayerText from 'Components/GameInfo/CurrentPlayerText';
@@ -15,6 +16,7 @@ export default function GameInfo(props) {
             <PlayerNameInput playerNumber={2} playerName="Player Two" />
             <ColumnCountInput currentCount={9} />
             <RowCountInput currentCount={7} />
+            <NumberInARowInput currentNumber={5} />
             <RestartButton />
             <CurrentPlayerText playerName="Player One" playerNumber={1} />
             <VictoryText playerName="Player Two" playerNumber={2} />
