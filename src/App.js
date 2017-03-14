@@ -18,99 +18,99 @@ class App extends Component {
           <div className="gameRegion board">
             <div className="column">
               <div className="tile unwinningTile">
-                <div className="hole empty"></div>
+                <div className="hole"></div>
               </div>
               <div className="tile unwinningTile">
-                <div className="hole empty"></div>
+                <div className="hole"></div>
               </div>
               <div className="tile unwinningTile">
-                <div className="hole empty"></div>
+                <div className="hole"></div>
               </div>
               <div className="tile unwinningTile">
-                <div className="hole empty"></div>
+                <div className="hole"></div>
               </div>
               <div className="tile unwinningTile">
-                <div className="hole empty"></div>
+                <div className="hole"></div>
               </div>
               <div className="tile unwinningTile">
-                <div className="hole empty"></div>
-              </div>
-            </div>
-            <div className="column">
-              <div className="tile unwinningTile">
-                <div className="hole empty"></div>
-              </div>
-              <div className="tile unwinningTile">
-                <div className="hole empty"></div>
-              </div>
-              <div className="tile unwinningTile">
-                <div className="hole empty"></div>
-              </div>
-              <div className="tile unwinningTile">
-                <div className="hole empty"></div>
-              </div>
-              <div className="tile unwinningTile">
-                <div className="hole empty"></div>
-              </div>
-              <div className="tile unwinningTile">
-                <div className="hole empty"></div>
+                <div className="hole"></div>
               </div>
             </div>
             <div className="column">
               <div className="tile unwinningTile">
-                <div className="hole empty"></div>
+                <div className="hole"></div>
               </div>
               <div className="tile unwinningTile">
-                <div className="hole empty"></div>
+                <div className="hole"></div>
               </div>
               <div className="tile unwinningTile">
-                <div className="hole empty"></div>
+                <div className="hole"></div>
               </div>
               <div className="tile unwinningTile">
-                <div className="hole empty"></div>
+                <div className="hole"></div>
               </div>
               <div className="tile unwinningTile">
-                <div className="hole empty"></div>
+                <div className="hole"></div>
               </div>
               <div className="tile unwinningTile">
-                <div className="hole empty"></div>
-              </div>
-            </div>
-            <div className="column">
-              <div className="tile unwinningTile">
-                <div className="hole empty"></div>
-              </div>
-              <div className="tile unwinningTile">
-                <div className="hole empty"></div>
-              </div>
-              <div className="tile unwinningTile">
-                <div className="hole empty"></div>
-              </div>
-              <div className="tile unwinningTile">
-                <div className="hole empty"></div>
-              </div>
-              <div className="tile unwinningTile">
-                <div className="hole empty"></div>
-              </div>
-              <div className="tile unwinningTile">
-                <div className="hole empty"></div>
+                <div className="hole"></div>
               </div>
             </div>
             <div className="column">
               <div className="tile unwinningTile">
-                <div className="hole empty"></div>
+                <div className="hole"></div>
               </div>
               <div className="tile unwinningTile">
-                <div className="hole empty"></div>
+                <div className="hole"></div>
               </div>
               <div className="tile unwinningTile">
-                <div className="hole empty"></div>
+                <div className="hole"></div>
               </div>
               <div className="tile unwinningTile">
-                <div className="hole empty"></div>
+                <div className="hole"></div>
               </div>
               <div className="tile unwinningTile">
-                <div className="hole empty"></div>
+                <div className="hole"></div>
+              </div>
+              <div className="tile unwinningTile">
+                <div className="hole"></div>
+              </div>
+            </div>
+            <div className="column">
+              <div className="tile unwinningTile">
+                <div className="hole"></div>
+              </div>
+              <div className="tile unwinningTile">
+                <div className="hole"></div>
+              </div>
+              <div className="tile unwinningTile">
+                <div className="hole"></div>
+              </div>
+              <div className="tile unwinningTile">
+                <div className="hole"></div>
+              </div>
+              <div className="tile unwinningTile">
+                <div className="hole"></div>
+              </div>
+              <div className="tile unwinningTile">
+                <div className="hole"></div>
+              </div>
+            </div>
+            <div className="column">
+              <div className="tile unwinningTile">
+                <div className="hole"></div>
+              </div>
+              <div className="tile unwinningTile">
+                <div className="hole"></div>
+              </div>
+              <div className="tile unwinningTile">
+                <div className="hole"></div>
+              </div>
+              <div className="tile unwinningTile">
+                <div className="hole"></div>
+              </div>
+              <div className="tile unwinningTile">
+                <div className="hole"></div>
               </div>
               <div className="tile winningTile">
                 <div className="hole player2Background"></div>
@@ -118,19 +118,19 @@ class App extends Component {
             </div>
             <div className="column">
               <div className="tile unwinningTile">
-                <div className="hole empty"></div>
+                <div className="hole"></div>
               </div>
               <div className="tile unwinningTile">
-                <div className="hole empty"></div>
+                <div className="hole"></div>
               </div>
               <div className="tile unwinningTile">
-                <div className="hole empty"></div>
+                <div className="hole"></div>
               </div>
               <div className="tile unwinningTile">
-                <div className="hole empty"></div>
+                <div className="hole"></div>
               </div>
               <div className="tile unwinningTile">
-                <div className="hole empty"></div>
+                <div className="hole"></div>
               </div>
               <div className="tile winningTile">
                 <div className="hole player2Background"></div>
@@ -138,16 +138,16 @@ class App extends Component {
             </div>
             <div className="column">
               <div className="tile unwinningTile">
-                <div className="hole empty"></div>
+                <div className="hole"></div>
               </div>
               <div className="tile unwinningTile">
-                <div className="hole empty"></div>
+                <div className="hole"></div>
               </div>
               <div className="tile unwinningTile">
-                <div className="hole empty"></div>
+                <div className="hole"></div>
               </div>
               <div className="tile unwinningTile">
-                <div className="hole empty"></div>
+                <div className="hole"></div>
               </div>
               <div className="tile unwinningTile">
                 <div className="hole player1Background"></div>
@@ -158,36 +158,16 @@ class App extends Component {
             </div>
             <div className="column">
               <div className="tile unwinningTile">
-                <div className="hole empty"></div>
+                <div className="hole"></div>
               </div>
               <div className="tile unwinningTile">
-                <div className="hole empty"></div>
+                <div className="hole"></div>
               </div>
               <div className="tile unwinningTile">
-                <div className="hole empty"></div>
+                <div className="hole"></div>
               </div>
               <div className="tile unwinningTile">
-                <div className="hole empty"></div>
-              </div>
-              <div className="tile unwinningTile">
-                <div className="hole player1Background"></div>
-              </div>
-              <div className="tile winningTile">
-                <div className="hole player2Background"></div>
-              </div>
-            </div>
-            <div className="column">
-              <div className="tile unwinningTile">
-                <div className="hole empty"></div>
-              </div>
-              <div className="tile unwinningTile">
-                <div className="hole empty"></div>
-              </div>
-              <div className="tile unwinningTile">
-                <div className="hole empty"></div>
-              </div>
-              <div className="tile unwinningTile">
-                <div className="hole empty"></div>
+                <div className="hole"></div>
               </div>
               <div className="tile unwinningTile">
                 <div className="hole player1Background"></div>
@@ -198,16 +178,36 @@ class App extends Component {
             </div>
             <div className="column">
               <div className="tile unwinningTile">
-                <div className="hole empty"></div>
+                <div className="hole"></div>
               </div>
               <div className="tile unwinningTile">
-                <div className="hole empty"></div>
+                <div className="hole"></div>
               </div>
               <div className="tile unwinningTile">
-                <div className="hole empty"></div>
+                <div className="hole"></div>
               </div>
               <div className="tile unwinningTile">
-                <div className="hole empty"></div>
+                <div className="hole"></div>
+              </div>
+              <div className="tile unwinningTile">
+                <div className="hole player1Background"></div>
+              </div>
+              <div className="tile winningTile">
+                <div className="hole player2Background"></div>
+              </div>
+            </div>
+            <div className="column">
+              <div className="tile unwinningTile">
+                <div className="hole"></div>
+              </div>
+              <div className="tile unwinningTile">
+                <div className="hole"></div>
+              </div>
+              <div className="tile unwinningTile">
+                <div className="hole"></div>
+              </div>
+              <div className="tile unwinningTile">
+                <div className="hole"></div>
               </div>
               <div className="tile unwinningTile">
                 <div className="hole player1Background"></div>

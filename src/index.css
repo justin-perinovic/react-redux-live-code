@@ -68,7 +68,7 @@ body, div, p, span, ol, ul, li, h1, h2, h3, h4, h5, h6 {
 }
 
 .unwinningTile .hole.player1Background, .unwinningTile .hole.player2Background {
-  opacity: .5;
+  opacity: .6;
 }
 
 .winningTile .hole {
