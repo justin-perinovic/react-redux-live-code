@@ -49,6 +49,11 @@ body, div, p, span, ol, ul, li, h1, h2, h3, h4, h5, h6 {
   background-color: rgb(220,190,60);
 }
 
+.column.selected .tile {
+  opacity: .6;
+  cursor: pointer;
+}
+
 .hole {
   content: '';
    display: inline-block;
