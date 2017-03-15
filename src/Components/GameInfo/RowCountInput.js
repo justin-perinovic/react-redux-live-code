@@ -8,13 +8,14 @@ function RowCountInput(props) {
         <div className="inputArea">
             <span>Row Count:</span>
             &nbsp;
-            <NumberDropdown defaultValue={props.currentCount} min={6} max={12} />
+            <NumberDropdown onChange={props.onChange} value={props.currentCount} min={6} max={12} />
         </div>
     )
 }
 
 RowCountInput.defaultProps = {
-    currentCount: React.PropTypes.number.isRequired
+    currentCount: React.PropTypes.number.isRequired,
+    onChange: React.PropTypes.func.isRequired
 };
 
 

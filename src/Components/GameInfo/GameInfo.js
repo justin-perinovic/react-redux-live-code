@@ -12,14 +12,14 @@ import CurrentPlayerText from 'Components/GameInfo/CurrentPlayerText';
 export default function GameInfo(props) {
     return (
         <div className="gameRegion gameInfo">
-            <PlayerNameInput playerNumber={1} playerName="Player One" />
-            <PlayerNameInput playerNumber={2} playerName="Player Two" />
-            <ColumnCountInput currentCount={9} />
-            <RowCountInput currentCount={7} />
-            <NumberInARowInput currentNumber={5} />
-            <RestartButton />
-            <CurrentPlayerText playerName="Player One" playerNumber={1} />
-            <VictoryText playerName="Player Two" playerNumber={2} />
+            <PlayerNameInput onChange={(e) => {props.updatePlayerName(1, e.target.value)}} playerNumber={1} playerName={props.gameInfo.players[1].name} />
+            <PlayerNameInput onChange={(e) => {props.updatePlayerName(2, e.target.value)}} playerNumber={2} playerName={props.gameInfo.players[2].name} />
+            <ColumnCountInput onChange={(e) => {props.updateColumnCount(e.target.value)}} currentCount={props.gameInfo.columnCount} />
+            <RowCountInput onChange={(e) => {props.updateRowCount(e.target.value)}} currentCount={props.gameInfo.rowCount} />
+            <NumberInARowInput onChange={(e) => {props.updateNumberInARowToWin(e.target.value)}} currentNumber={props.gameInfo.numberInARowToWin} />
+            <RestartButton onClick={props.restartGame} />
+            <CurrentPlayerText playerName={props.currentPlayersData[1].name} playerNumber={1} />
+            <VictoryText playerName={props.currentPlayersData[2].name} playerNumber={2} />
         </div>
     );
 }

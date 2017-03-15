@@ -8,13 +8,14 @@ function NumberInARowInput(props) {
         <div className="inputArea">
             <span>Number in a Row to Win:</span>
             &nbsp;
-            <NumberDropdown defaultValue={props.currentNumber} min={4} max={8} />
+            <NumberDropdown onChange={props.onChange} value={props.currentNumber} min={4} max={8} />
         </div>
     )
 }
 
 NumberInARowInput.defaultProps = {
-    currentNumber: React.PropTypes.number.isRequired
+    currentNumber: React.PropTypes.number.isRequired,
+    onChange: React.PropTypes.func.isRequired
 };
 
 

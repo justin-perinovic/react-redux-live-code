@@ -1,7 +1,13 @@
 import React from 'react';
 
-export default function RestartButton(props) {
+function RestartButton(props) {
     return (
-        <button className="restartButton">Restart Game</button>
+        <button onClick={props.onClick} className="restartButton">Restart Game</button>
     );
 }
+
+RestartButton.defaultProps = {
+    onClick: React.PropTypes.func.isRequired
+};
+
+export default RestartButton;

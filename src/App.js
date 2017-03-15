@@ -6,7 +6,7 @@ import {Provider} from 'react-redux';
 import RootReducer from 'Reducers/RootReducer';
 
 import Board from 'Components/Board/Board';
-import GameInfo from 'Components/GameInfo/GameInfo';
+import GameInfo from 'Containers/GameInfo/GameInfo';
 
 import 'App.css';
 

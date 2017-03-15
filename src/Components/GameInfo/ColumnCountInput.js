@@ -8,13 +8,14 @@ function ColumnCountInput(props) {
         <div className="inputArea">
             <span>Column Count:</span>
             &nbsp;
-            <NumberDropdown defaultValue={props.currentCount} min={6} max={12} />
+            <NumberDropdown onChange={props.onChange} value={props.currentCount} min={6} max={12} />
         </div>
     )
 }
 
 ColumnCountInput.defaultProps = {
-    currentCount: React.PropTypes.number.isRequired
+    currentCount: React.PropTypes.number.isRequired,
+    onChange: React.PropTypes.func.isRequired
 };
 
 
