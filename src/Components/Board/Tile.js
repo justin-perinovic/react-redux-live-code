@@ -11,7 +11,7 @@ function Tile(props) {
     }
 
     const holeClasses = ['hole'];
-    if (owningPlayerNumber !== undefined) {
+    if (owningPlayerNumber) {
         holeClasses.push(`player${owningPlayerNumber}Background`);
     }
 
