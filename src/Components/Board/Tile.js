@@ -1,20 +1,22 @@
 import React from 'react';
 
 function Tile(props) {
+    const {wasWinningTile, owningPlayerNumber, ...otherProps} = props;
+
     const tileClasses = ['tile'];
-    if (props.wasWinningTile === true) {
+    if (wasWinningTile === true) {
         tileClasses.push('winningTile');
-    } else if (props.wasWinningTile === false) {
+    } else if (wasWinningTile === false) {
         tileClasses.push('unwinningTile');
     }
 
     const holeClasses = ['hole'];
-    if (props.hasOwnProperty('owningPlayerNumber')) {
-        holeClasses.push(`player${props.owningPlayerNumber}Background`);
+    if (owningPlayerNumber !== undefined) {
+        holeClasses.push(`player${owningPlayerNumber}Background`);
     }
 
     return (
-        <div className={tileClasses.join(' ')}>
+        <div {...otherProps} className={tileClasses.join(' ')}>
             <div className={holeClasses.join(' ')}></div>
         </div>
     );
