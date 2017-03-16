@@ -18,7 +18,7 @@ export function getVictoryTiles(victoryRequirement, playerNumber, baseX, baseY, 
     function tileBelongsToPlayer(vector) {
         const x = vector.x;
         const y = vector.y;
-
+        
         if (
             board[x]
             && board[x][y]
@@ -32,7 +32,7 @@ export function getVictoryTiles(victoryRequirement, playerNumber, baseX, baseY, 
 
 
     let victoryTiles = {};
-    const baseVector = {x: baseX, y: baseY};
+    const baseVector = {x: parseInt(baseX, 10), y: parseInt(baseY, 10)};
 
     // Short out if function was eroneously called on tile not belonging to player
     if (!tileBelongsToPlayer(baseVector)) {
@@ -72,7 +72,8 @@ export function getVictoryTiles(victoryRequirement, playerNumber, baseX, baseY, 
             const newRoutineSet = [];
 
             routineSet.forEach((subroutineSet) => {
-                let runningVector = baseVector;
+                let runningVector = _.clone(baseVector);
+                
                 subroutineSet.forEach((subroutine) => {
                     runningVector = subroutine(distance, runningVector);
                 });
@@ -96,4 +97,31 @@ export function getVictoryTiles(victoryRequirement, playerNumber, baseX, baseY, 
     });
 
     return victoryTiles;
+}
+
+export function isColumnFull(columnData) {
+    return (columnData[0] !== 0);
+}
+
+export function isBoardFull(boardData) {
+    let foundEmptyColumn = false;
+    _.forEach(boardData, (columnData) => {
+        if (!isColumnFull(columnData)) {
+            foundEmptyColumn = true;
+        }
+    });
+
+    return (!foundEmptyColumn);
+}
+
+export function getFreshGameBoard(columnCount, rowCount) {
+    const tiles = {};
+    for (let col = 0; col < columnCount; col++) {
+        tiles[col] = {};
+        for (let row = 0; row < rowCount; row++) {
+            tiles[col][row] = 0;
+        }
+    }
+
+    return tiles;
 }
