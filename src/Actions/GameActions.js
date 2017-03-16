@@ -2,7 +2,10 @@ import * as ActionTypes from 'Constants/ActionTypes';
 
 
 export function RestartGame() {
-    return {
-        type: ActionTypes.RESTART_GAME
-    }
+    return (dispatch, getState) => {
+        dispatch({
+            type: ActionTypes.RESTART_GAME,
+            nextGameSettings: getState().GameInfo.nextGame
+        });
+    };
 }
