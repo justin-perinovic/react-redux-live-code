@@ -8,7 +8,7 @@ function NumberInARowInput(props) {
         <div className="inputArea">
             <span>Number in a Row to Win:</span>
             &nbsp;
-            <NumberDropdown onChange={props.onChange} value={props.currentNumber} min={4} max={8} />
+            <NumberDropdown onChange={props.onChange} value={props.currentNumber} min={2} max={8} />
         </div>
     )
 }

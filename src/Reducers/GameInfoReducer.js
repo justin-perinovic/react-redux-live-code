@@ -28,7 +28,7 @@ export default function(state = getInitialState(), action) {
 
         case (ActionTypes.RESTART_GAME):
             statePatch = _.cloneDeep(state);
-            statePatch.currentGame = _.cloneDeep(statePatch.nextGame);
+            statePatch.currentGame = _.cloneDeep(action.nextGameSettings);
             return statePatch;
 
         default:

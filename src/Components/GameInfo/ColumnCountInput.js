@@ -8,7 +8,7 @@ function ColumnCountInput(props) {
         <div className="inputArea">
             <span>Column Count:</span>
             &nbsp;
-            <NumberDropdown onChange={props.onChange} value={props.currentCount} min={6} max={12} />
+            <NumberDropdown onChange={props.onChange} value={props.currentCount} min={3} max={12} />
         </div>
     )
 }

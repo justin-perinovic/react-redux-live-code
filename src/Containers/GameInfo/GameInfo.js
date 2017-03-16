@@ -8,7 +8,10 @@ export default connect(
     function mapStateToProps(state) {
         return {
             gameInfo: state.GameInfo.nextGame,
-            currentPlayersData: state.GameInfo.currentGame.players
+            currentPlayersData: state.GameInfo.currentGame.players,
+            currentPlayer: state.Board.currentPlayer,
+            isGameComplete: state.Board.isGameComplete,
+            tiles: state.Board.tiles
         }
     },
     function mapDispatchToProps(dispatch) {
