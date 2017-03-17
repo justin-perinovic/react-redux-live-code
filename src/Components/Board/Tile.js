@@ -22,9 +22,9 @@ function Tile(props) {
     );
 }
 
-Tile.defaultProps = {
+Tile.propTypes = {
     wasWinningTile: React.PropTypes.bool,
-    owningPlayerNumber: React.PropTypes.number
+    owningPlayerNumber: React.PropTypes.number.isRequired
 };
 
 

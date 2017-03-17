@@ -5,7 +5,30 @@ import Column from 'Components/Board/Column';
 
 
 function Board(props) {
-    return null;
+    const isGameComplete = (
+        props.isGameComplete
+        || GameUtils.isBoardFull(props.tiles)
+    );
+
+    const columns = [];
+    _.forEach(props.tiles, (columnData, columnIndex) => {
+        columns.push(
+            <Column
+                key={columnIndex}
+                columnData={columnData}
+                addToColumn={() => {props.addToColumn(columnIndex)}}
+                isGameComplete={isGameComplete}
+                victoryTiles={props.victoryTiles}
+                columnIndex={columnIndex}
+            />
+        )
+    });
+    
+    return (
+        <div className="gameRegion board">
+            {columns}
+        </div>
+    );
 }
 
 Board.defaultProps = {

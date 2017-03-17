@@ -8,12 +8,72 @@ class Column extends React.Component {
     constructor() {
         super();
 
+        this.handleClick = this.handleClick.bind(this);
+        this.handleMouseEnter = this.handleMouseEnter.bind(this);
+        this.handleMouseLeave = this.handleMouseLeave.bind(this);
+
         this.state = {
+            isSelected: false
         };
     }
 
+    componentWillReceiveProps(nextProps) {
+        if (
+            GameUtils.isColumnFull(nextProps.columnData)
+            || nextProps.isGameComplete
+        ) {
+            this.setState({isSelected: false});
+        }
+    }
+
+    handleClick() {
+        this.props.addToColumn();
+    }
+
+    handleMouseEnter() {
+        if (
+            !GameUtils.isColumnFull(this.props.columnData)
+            && !this.props.isGameComplete
+        ) {
+            this.setState({isSelected: true});
+        }
+    }
+
+    handleMouseLeave() {
+        this.setState({isSelected: false})
+    }
+
     render() {
-        return null;
+        const tiles = [];
+        _.forEach(this.props.columnData, (occupantNumber, rowIndex) => {
+            const tileProps = {
+                key: rowIndex,
+                owningPlayerNumber: occupantNumber
+            };
+            if (this.props.isGameComplete) {
+                tileProps.wasWinningTile = _.has(this.props.victoryTiles, [this.props.columnIndex, rowIndex]);
+            }
+
+            tiles.push(
+                <Tile {...tileProps} />
+            )
+        });
+
+        const wrapperClasses = ['column'];
+        if (this.state.isSelected) {
+            wrapperClasses.push('selected');
+        }
+
+        const wrapperProps = {className: wrapperClasses.join(' ')};
+        wrapperProps.onClick = this.handleClick;
+        wrapperProps.onMouseEnter = this.handleMouseEnter;
+        wrapperProps.onMouseLeave = this.handleMouseLeave;
+
+        return (
+            <div {...wrapperProps}>
+                {tiles}
+            </div>
+        )
     }
 }
 
