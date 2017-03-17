@@ -9,6 +9,7 @@ var InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
 var paths = require('./paths');
 var getClientEnvironment = require('./env');
 
+var path = require('path');
 
 
 // Webpack uses `publicPath` to determine where the app is being served from.
