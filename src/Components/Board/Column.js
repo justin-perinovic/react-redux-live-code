@@ -13,7 +13,11 @@ class Column extends React.Component {
     }
 
     render() {
-        return null;
+        return (
+            <div className="column">
+                
+            </div>
+        );
     }
 }
 
