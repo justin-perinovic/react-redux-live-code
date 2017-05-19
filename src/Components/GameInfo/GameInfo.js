@@ -15,7 +15,7 @@ import CurrentPlayerText from 'Components/GameInfo/CurrentPlayerText';
 export default function GameInfo(props) {
     let currentPlayerText = null;
     let victoryText = null;
-    if (props.isGameComplete) {
+    if (props.isWinnerFound) {
         victoryText = (
             <VictoryText playerName={props.currentPlayersData[props.currentPlayer].name} playerNumber={props.currentPlayer} />
         );

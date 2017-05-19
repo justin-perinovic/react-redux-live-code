@@ -10,7 +10,7 @@ export default function getInitialState() {
     return {
         tiles: tiles,
         currentPlayer: 1,
-        isGameComplete: false,
+        isWinnerFound: false,
         victoryTiles: {}
     }
 };

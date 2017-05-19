@@ -10,7 +10,7 @@ export default connect(
             gameInfo: state.GameInfo.nextGame,
             currentPlayersData: state.GameInfo.currentGame.players,
             currentPlayer: state.Board.currentPlayer,
-            isGameComplete: state.Board.isGameComplete,
+            isWinnerFound: state.Board.isWinnerFound,
             tiles: state.Board.tiles
         }
     },
