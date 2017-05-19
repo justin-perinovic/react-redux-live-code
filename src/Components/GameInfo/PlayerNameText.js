@@ -10,7 +10,7 @@ function PlayerNameText(props) {
     )
 }
 
-PlayerNameText.defaultProps = {
+PlayerNameText.propTypes = {
     playerName: React.PropTypes.string.isRequired,
     playerNumber: React.PropTypes.number.isRequired
 };

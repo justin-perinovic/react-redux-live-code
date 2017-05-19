@@ -17,7 +17,7 @@ class Column extends React.Component {
     }
 }
 
-Column.defaultProps = {
+Column.propTypes = {
 };
 
 

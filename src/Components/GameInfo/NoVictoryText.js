@@ -7,7 +7,7 @@ function NoVictoryText(props) {
     )
 }
 
-NoVictoryText.defaultProps = {
+NoVictoryText.propTypes = {
 };
 
 

@@ -13,7 +13,7 @@ function ColumnCountInput(props) {
     )
 }
 
-ColumnCountInput.defaultProps = {
+ColumnCountInput.propTypes = {
     currentCount: React.PropTypes.number.isRequired,
     onChange: React.PropTypes.func.isRequired
 };

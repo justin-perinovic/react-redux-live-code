@@ -8,7 +8,7 @@ function Board(props) {
     return null;
 }
 
-Board.defaultProps = {
+Board.propTypes = {
 };
 
 

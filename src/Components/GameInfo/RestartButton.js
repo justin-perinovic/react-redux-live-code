@@ -6,7 +6,7 @@ function RestartButton(props) {
     );
 }
 
-RestartButton.defaultProps = {
+RestartButton.propTypes = {
     onClick: React.PropTypes.func.isRequired
 };
 

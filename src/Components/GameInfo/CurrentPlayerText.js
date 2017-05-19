@@ -13,7 +13,7 @@ function CurrentPlayerText(props) {
     );
 }
 
-CurrentPlayerText.defaultProps = {
+CurrentPlayerText.propTypes = {
 };
 
 

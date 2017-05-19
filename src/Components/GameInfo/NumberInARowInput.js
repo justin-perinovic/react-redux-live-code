@@ -13,7 +13,7 @@ function NumberInARowInput(props) {
     )
 }
 
-NumberInARowInput.defaultProps = {
+NumberInARowInput.propTypes = {
     currentNumber: React.PropTypes.number.isRequired,
     onChange: React.PropTypes.func.isRequired
 };
