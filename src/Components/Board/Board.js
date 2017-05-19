@@ -5,7 +5,11 @@ import Column from 'Components/Board/Column';
 
 
 function Board(props) {
-    return null;
+    return (
+        <div className="gameRegion board">
+
+        </div>
+    );
 }
 
 Board.propTypes = {
