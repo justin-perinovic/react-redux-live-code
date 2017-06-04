@@ -27,9 +27,6 @@ export default connect(
             },
             updateRowCount: function(count) {
                 dispatch(GameInfoActions.UpdateRowCount(count));
-            },
-            updateNumberInARowToWin: function(number) {
-                dispatch(GameInfoActions.UpdateNumberInARowToWin(number));
             }
         }
     }

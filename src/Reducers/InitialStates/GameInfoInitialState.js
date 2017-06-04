@@ -8,8 +8,7 @@ const getInitialStateBranch = () => ({
         }
     },
     columnCount: 9,
-    rowCount: 7,
-    numberInARowToWin: 5
+    rowCount: 7
 });
 
 export default function getInitialState() {

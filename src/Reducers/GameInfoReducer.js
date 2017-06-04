@@ -21,11 +21,6 @@ export default function(state = getInitialState(), action) {
             statePatch.nextGame.rowCount = action.rowCount;
             return statePatch;
 
-        case (ActionTypes.GAME_INFO_UPDATE_NUMBER_IN_A_ROW):
-            statePatch = _.cloneDeep(state);
-            statePatch.nextGame.numberInARowToWin = action.numberInARowToWin;
-            return statePatch;
-
         case (ActionTypes.RESTART_GAME):
             statePatch = _.cloneDeep(state);
             statePatch.currentGame = _.cloneDeep(action.nextGameSettings);

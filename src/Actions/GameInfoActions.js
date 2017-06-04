@@ -22,10 +22,3 @@ export function UpdateRowCount(rowCount) {
         rowCount
     };
 };
-
-export function UpdateNumberInARowToWin(numberInARowToWin) {
-    return {
-        type: ActionTypes.GAME_INFO_UPDATE_NUMBER_IN_A_ROW,
-        numberInARowToWin
-    };
-};

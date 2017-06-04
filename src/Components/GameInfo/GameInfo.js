@@ -5,7 +5,6 @@ import * as GameUtils from 'Utils/GameUtils';
 import PlayerNameInput from 'Components/GameInfo/PlayerNameInput';
 import ColumnCountInput from 'Components/GameInfo/ColumnCountInput';
 import RowCountInput from 'Components/GameInfo/RowCountInput';
-import NumberInARowInput from 'Components/GameInfo/NumberInARowInput';
 import RestartButton from 'Components/GameInfo/RestartButton';
 import VictoryText from 'Components/GameInfo/VictoryText';
 import NoVictoryText from 'Components/GameInfo/NoVictoryText';
@@ -35,7 +34,6 @@ export default function GameInfo(props) {
             <PlayerNameInput onChange={(e) => {props.updatePlayerName(2, e.target.value)}} playerNumber={2} playerName={props.gameInfo.players[2].name} />
             <ColumnCountInput onChange={(e) => {props.updateColumnCount(e.target.value)}} currentCount={props.gameInfo.columnCount} />
             <RowCountInput onChange={(e) => {props.updateRowCount(e.target.value)}} currentCount={props.gameInfo.rowCount} />
-            <NumberInARowInput onChange={(e) => {props.updateNumberInARowToWin(e.target.value)}} currentNumber={props.gameInfo.numberInARowToWin} />
             <RestartButton onClick={props.restartGame} />
             {currentPlayerText}
             {victoryText}

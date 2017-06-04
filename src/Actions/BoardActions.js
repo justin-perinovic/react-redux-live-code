@@ -39,7 +39,7 @@ export function AddToColumn(columnNumber) {
             newTiles[columnNumber][rowNumber] = playerNumber;
         }
 
-        const victoryRequirement = gameInfoState.currentGame.numberInARowToWin;
+        const victoryRequirement = 2; // TODO: Remove
         const victoryTiles = GameUtils.getVictoryTiles(victoryRequirement, playerNumber, tileVector.x, tileVector.y, newTiles)        
         const shouldSwitchPlayerControl = (Object.keys(victoryTiles).length === 0);
 
