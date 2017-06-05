@@ -1,26 +1,26 @@
 import _ from 'lodash';
 import React from 'react';
-import * as GameUtils from 'Utils/GameUtils';
 import Column from 'Components/Board/Column';
 
 
 function Board(props) {
     const columns = [];
-    _.forEach(props.tiles, (columnData, columnIndex) => {
+
+    const lastColumnIndex = (props.columnCount - 1);
+    for (let colI = 0; colI <= lastColumnIndex; colI++) {
+        const isLastColumn = Boolean(colI === lastColumnIndex);
+
         columns.push(
             <Column
-                key={columnIndex}
-                columnIndex={columnIndex}
-                columnData={columnData}
-                victoryTiles={props.victoryTiles}
-                addTileToColumn={() => {props.addTileToColumn(columnIndex)}}
-                isGameComplete={(
-                    GameUtils.isBoardFull(props.tiles)
-                    || props.isWinnerFound
-                )}
+                key={colI}
+                columnIndex={colI}
+                isLastColumn={isLastColumn}
+                isGameComplete={false}
+                tiles={props.tiles}
+                rowCount={props.rowCount}
             />
         )
-    });
+    }
 
     return (
         <div className="gameRegion board">
@@ -31,7 +31,9 @@ function Board(props) {
 
 Board.propTypes = {
     tiles: React.PropTypes.object.isRequired,
-    addTileToColumn: React.PropTypes.func.isRequired
+    addTileToColumn: React.PropTypes.func.isRequired,
+    rowCount: React.PropTypes.number.isRequired,
+    columnCount: React.PropTypes.number.isRequired,
 };
 
 

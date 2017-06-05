@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import React from 'react';
+import * as Sides from 'Constants/Sides';
 import * as GameUtils from 'Utils/GameUtils';
 import Tile from 'Components/Board/Tile';
 
@@ -7,77 +8,43 @@ import Tile from 'Components/Board/Tile';
 class Column extends React.Component {
     constructor() {
         super();
-
-        this.canAddTiles = this.canAddTiles.bind(this);
-        this.handleClick = this.handleClick.bind(this);
-        this.handleMouseEnter = this.handleMouseEnter.bind(this);
-        this.handleMouseLeave = this.handleMouseLeave.bind(this);
-
-        this.state = {
-            isSelected: false
-        };
-    }
-
-    componentWillReceiveProps(nextProps) {
-        if (!this.canAddTiles(nextProps)) {
-            this.setState({isSelected: false});
-        }
-    }
-
-    canAddTiles(props) {
-        return (
-            !GameUtils.isColumnFull(props.columnData)
-            && !props.isGameComplete
-        );
-    }
-
-    handleMouseEnter() {
-        if (this.canAddTiles(this.props)) {
-            this.setState({isSelected: true});
-        }
-    }
-
-    handleMouseLeave() {
-        this.setState({isSelected: false});
-    }
-
-    handleClick() {
-        if (this.canAddTiles(this.props)) {
-            this.props.addTileToColumn();
-        }
     }
 
     render() {
         const tiles = [];
-        _.forEach(this.props.columnData, (occupantNumber, rowIndex) => {
-            let wasWinningTile;
-            if (this.props.isGameComplete) {
-                wasWinningTile = _.has(
-                    this.props.victoryTiles, 
-                    [this.props.columnIndex, rowIndex]
-                );
+
+        const baseDataIndexX = (this.props.columnIndex * 2);
+        
+        const lastRowIndex = (this.props.rowCount - 1);
+        for (let rowI = 0; rowI <= lastRowIndex; rowI++) {
+            const baseDataIndexY = rowI;
+            const isLastRow = Boolean(rowI === lastRowIndex);
+
+            const sides = {
+                [Sides.LEFT]: this.props.tiles[baseDataIndexX][baseDataIndexY],
+                [Sides.TOP]: this.props.tiles[baseDataIndexX+1][baseDataIndexY],
+            };
+            if (isLastRow) {
+                sides[Sides.BOTTOM] = this.props.tiles[baseDataIndexX+1][baseDataIndexY+1];
+            }
+            if (this.props.isLastColumn) {
+                sides[Sides.RIGHT] = this.props.tiles[baseDataIndexX+2][baseDataIndexY];
+                console.log('right')
             }
 
             tiles.push(
                 <Tile
-                    key={rowIndex}
-                    onClick={this.handleClick}
-                    owningPlayerNumber={occupantNumber}
-                    wasWinningTile={wasWinningTile}
+                    key={rowI}
+                    sides={sides}
                 />
             )
-        });
+        }
 
         
         const classNames = ['column'];
-        if (this.state.isSelected) {
-            classNames.push('selected')
-        }
 
         const wrapperProps = {
-            className: classNames.join(' '),
-            onMouseEnter: this.handleMouseEnter,
-            onMouseLeave: this.handleMouseLeave
+            className: classNames.join(' ')
         };
         
         return (
@@ -89,11 +56,11 @@ class Column extends React.Component {
 }
 
 Column.propTypes = {
-    columnData: React.PropTypes.object.isRequired,
-    victoryTiles: React.PropTypes.object.isRequired,
-    addTileToColumn: React.PropTypes.func.isRequired,
+    tiles: React.PropTypes.object.isRequired,
+    rowCount: React.PropTypes.number.isRequired,
     columnIndex: React.PropTypes.number.isRequired,
-    isGameComplete: React.PropTypes.bool.isRequired
+    isLastColumn: React.PropTypes.bool.isRequired,
+    isGameComplete: React.PropTypes.bool.isRequired,
 };
 
 

@@ -7,8 +7,8 @@ const getInitialStateBranch = () => ({
             name: 'Player Two'
         }
     },
-    columnCount: 9,
-    rowCount: 7
+    columnCount: 3,
+    rowCount: 3
 });
 
 export default function getInitialState() {

@@ -116,9 +116,9 @@ export function isBoardFull(boardData) {
 
 export function getFreshGameBoard(columnCount, rowCount) {
     const tiles = {};
-    for (let col = 0; col < columnCount; col++) {
+    for (let col = 0; col < ((columnCount*2)+1); col++) {
         tiles[col] = {};
-        for (let row = 0; row < rowCount; row++) {
+        for (let row = 0; row < (rowCount+1); row++) {
             tiles[col][row] = 0;
         }
     }

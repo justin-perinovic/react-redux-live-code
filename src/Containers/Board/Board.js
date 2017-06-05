@@ -8,7 +8,9 @@ export default connect(
         return {
             tiles: state.Board.tiles,
             victoryTiles: state.Board.victoryTiles,
-            isWinnerFound: state.Board.isWinnerFound
+            isWinnerFound: state.Board.isWinnerFound,
+            rowCount: state.GameInfo.currentGame.rowCount,
+            columnCount: state.GameInfo.currentGame.columnCount,
         }
     },
     function mapDispatchToProps(dispatch) {

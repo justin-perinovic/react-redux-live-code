@@ -86,6 +86,11 @@
     ]
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": "react-app",
+    "rules": {
+      "no-useless-constructor": 0,
+      "no-unused-vars": 0,
+      "no-loop-func": 0
+    }
   }
 }

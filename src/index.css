@@ -8,6 +8,23 @@ body, div, p, span, ol, ul, li, h1, h2, h3, h4, h5, h6 {
   box-sizing: border-box;
 }
 
+.top-left {
+  top: 0;
+  left: 0;
+}
+.top-right {
+  top: 0;
+  right: 0;
+}
+.bottom-left {
+  bottom: 0;
+  left: 0;
+}
+.bottom-right {
+  bottom: 0;
+  right: 0;
+}
+
 .player1Background {
   background-color: rgb(0, 0, 170)!important;
 }
@@ -46,8 +63,53 @@ body, div, p, span, ol, ul, li, h1, h2, h3, h4, h5, h6 {
   position: relative;
   width: 90px;
   height: 90px;
-  background-color: rgb(220,190,60);
 }
+
+
+.side, .corner {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #000;
+}
+
+.side {
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.side.top, .side.bottom {
+  width: 85px;
+}
+
+.side.left {
+  right: inherit;
+}
+.side.right {
+  left: inherit;
+}
+.side.left, .side.right {
+  top: 5px;
+  height: 85px;
+}
+
+.side.left, .corner.top-left, .corner.bottom-left {
+  left: -5px;
+}
+.side.right, .corner.top-right, .corner.bottom-right {
+  right: -5px;
+}
+
+.corner.top-left, .corner.top-right, .side.top {
+  top: -5px;
+}
+
+.corner.bottom-left, .corner.bottom-right, .side.bottom {
+  bottom: -5px;
+}
+
 
 .column.selected .tile {
   opacity: .6;
