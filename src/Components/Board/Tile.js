@@ -68,7 +68,7 @@ function Tile(props) {
         tileClasses.push(`player${props.owningPlayerNumber}Background`);
         firstPlayerLetter = (
             <div className="firstPlayerLetter">
-              {props.players[props.owningPlayerNumber].name[0]}
+              {props.players[props.owningPlayerNumber].name[0].toUpperCase()}
             </div>
         );
     }
@@ -76,9 +76,9 @@ function Tile(props) {
 
     return (
         <div className={tileClasses.join(' ')}>
-            {renderedCorners}
-            {renderedSides}
             {firstPlayerLetter}
+            {renderedSides}
+            {renderedCorners}
         </div>
     );
 }
