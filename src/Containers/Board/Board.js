@@ -11,6 +11,7 @@ export default connect(
             isWinnerFound: state.Board.isWinnerFound,
             rowCount: state.GameInfo.currentGame.rowCount,
             columnCount: state.GameInfo.currentGame.columnCount,
+            players: state.GameInfo.currentGame.players
         }
     },
     function mapDispatchToProps(dispatch) {

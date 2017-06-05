@@ -27,9 +27,11 @@ body, div, p, span, ol, ul, li, h1, h2, h3, h4, h5, h6 {
 
 .player1Background {
   background-color: rgb(0, 0, 170)!important;
+  z-index: -5;
 }
 .player2Background {
   background-color: rgb(170, 0, 0)!important;
+  z-index: -5;
 }
 .player1Text {
   color: rgb(0, 0, 170)!important;
@@ -169,4 +171,16 @@ body, div, p, span, ol, ul, li, h1, h2, h3, h4, h5, h6 {
 
 .victoryText {
   margin-top: 30px;
+}
+
+.firstPlayerLetter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  text-shadow: -2px 2px 5px black;
+  z-index: 5;
+  font-size: 70px;
+  color: white;
 }

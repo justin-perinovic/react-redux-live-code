@@ -14,7 +14,7 @@ class Column extends React.Component {
         const tiles = [];
 
         const baseDataIndexX = (this.props.columnIndex * 2);
-        
+
         const lastRowIndex = (this.props.rowCount - 1);
         for (let rowI = 0; rowI <= lastRowIndex; rowI++) {
             const baseDataIndexY = rowI;
@@ -49,17 +49,18 @@ class Column extends React.Component {
                     colNum={this.props.columnIndex}
                     claimTile={this.props.claimTile}
                     owningPlayerNumber={this.props.claimedSquares[rowI]}
+                    players={this.props.players}
                 />
             )
         }
 
-        
+
         const classNames = ['column'];
 
         const wrapperProps = {
             className: classNames.join(' ')
         };
-        
+
         return (
             <div {...wrapperProps}>
                 {tiles}
@@ -75,7 +76,8 @@ Column.propTypes = {
     rowCount: React.PropTypes.number.isRequired,
     columnIndex: React.PropTypes.number.isRequired,
     isLastColumn: React.PropTypes.bool.isRequired,
-    isGameComplete: React.PropTypes.bool.isRequired,    
+    isGameComplete: React.PropTypes.bool.isRequired,
+    players: React.PropTypes.object.isRequired
 };
 
 
