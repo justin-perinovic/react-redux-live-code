@@ -27,6 +27,7 @@ function Board(props) {
                 rowCount={props.rowCount}
                 claimTile={props.claimTile}
                 claimedSquares={claimedSquares[colI]}
+                players={props.players}
             />
         )
     }
@@ -43,6 +44,7 @@ Board.propTypes = {
     tiles: React.PropTypes.object.isRequired,
     rowCount: React.PropTypes.number.isRequired,
     columnCount: React.PropTypes.number.isRequired,
+    players: React.PropTypes.object.isRequired
 };
 
 

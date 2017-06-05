@@ -11,14 +11,14 @@ function Tile(props) {
             <Corner key={cornerLocation} cornerLocation={cornerLocation} />
         )
     }
-    
+
     function renderSide(side) {
         const baseX = (props.colNum * 2);
         const baseY = props.rowNum;
-        
+
         const claimTile = () => {
             props.claimTile(
-                baseX + BoardUtils.getOffsetX(side), 
+                baseX + BoardUtils.getOffsetX(side),
                 baseY + BoardUtils.getOffsetY(side)
             );
         };
@@ -58,20 +58,27 @@ function Tile(props) {
     if (props.sides.hasOwnProperty(Sides.BOTTOM)) {
         renderedCorners.push(renderCorner(Corners.BOTTOM_LEFT));
 
-        renderedSides.push(renderSide(Sides.BOTTOM));        
+        renderedSides.push(renderSide(Sides.BOTTOM));
     }
 
-    
+
     const tileClasses = ['tile'];
+    let firstPlayerLetter = null;
     if (props.owningPlayerNumber) {
         tileClasses.push(`player${props.owningPlayerNumber}Background`);
+        firstPlayerLetter = (
+            <div className="firstPlayerLetter">
+              {props.players[props.owningPlayerNumber].name[0]}
+            </div>
+        );
     }
 
-    
+
     return (
         <div className={tileClasses.join(' ')}>
             {renderedCorners}
             {renderedSides}
+            {firstPlayerLetter}
         </div>
     );
 }
@@ -82,7 +89,8 @@ Tile.propTypes = {
     tiles: React.PropTypes.object.isRequired,
     rowNum: React.PropTypes.number.isRequired,
     colNum: React.PropTypes.number.isRequired,
-    owningPlayerNumber: React.PropTypes.number
+    owningPlayerNumber: React.PropTypes.number,
+    players: React.PropTypes.object.isRequired
 };
 
 
