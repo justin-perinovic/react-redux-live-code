@@ -18,6 +18,7 @@ function Board(props) {
                 isGameComplete={false}
                 tiles={props.tiles}
                 rowCount={props.rowCount}
+                claimTile={props.claimTile}
             />
         )
     }
@@ -30,8 +31,8 @@ function Board(props) {
 }
 
 Board.propTypes = {
+    claimTile: React.PropTypes.func.isRequired,
     tiles: React.PropTypes.object.isRequired,
-    addTileToColumn: React.PropTypes.func.isRequired,
     rowCount: React.PropTypes.number.isRequired,
     columnCount: React.PropTypes.number.isRequired,
 };

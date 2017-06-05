@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import React from 'react';
 import * as Sides from 'Constants/Sides';
-import * as GameUtils from 'Utils/GameUtils';
+import * as BoardUtils from 'Utils/BoardUtils';
 import Tile from 'Components/Board/Tile';
 
 
@@ -20,22 +20,34 @@ class Column extends React.Component {
             const baseDataIndexY = rowI;
             const isLastRow = Boolean(rowI === lastRowIndex);
 
+            const getOwner = (side) => (
+                BoardUtils.getOwningPlayerNumber(
+                    baseDataIndexX,
+                    baseDataIndexY,
+                    side,
+                    this.props.tiles
+                )
+            );
+
             const sides = {
-                [Sides.LEFT]: this.props.tiles[baseDataIndexX][baseDataIndexY],
-                [Sides.TOP]: this.props.tiles[baseDataIndexX+1][baseDataIndexY],
+                [Sides.LEFT]: getOwner(Sides.LEFT),
+                [Sides.TOP]: getOwner(Sides.TOP),
             };
             if (isLastRow) {
-                sides[Sides.BOTTOM] = this.props.tiles[baseDataIndexX+1][baseDataIndexY+1];
+                sides[Sides.BOTTOM] = getOwner(Sides.BOTTOM);
             }
             if (this.props.isLastColumn) {
-                sides[Sides.RIGHT] = this.props.tiles[baseDataIndexX+2][baseDataIndexY];
-                console.log('right')
+                sides[Sides.RIGHT] = getOwner(Sides.RIGHT);
             }
 
             tiles.push(
                 <Tile
                     key={rowI}
                     sides={sides}
+                    tiles={this.props.tiles}
+                    rowNum={rowI}
+                    colNum={this.props.columnIndex}
+                    claimTile={this.props.claimTile}
                 />
             )
         }
@@ -56,6 +68,7 @@ class Column extends React.Component {
 }
 
 Column.propTypes = {
+    claimTile: React.PropTypes.func.isRequired,
     tiles: React.PropTypes.object.isRequired,
     rowCount: React.PropTypes.number.isRequired,
     columnIndex: React.PropTypes.number.isRequired,

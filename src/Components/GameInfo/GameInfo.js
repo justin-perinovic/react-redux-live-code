@@ -1,6 +1,6 @@
 import React from 'react';
 
-import * as GameUtils from 'Utils/GameUtils';
+import * as BoardUtils from 'Utils/BoardUtils';
 
 import PlayerNameInput from 'Components/GameInfo/PlayerNameInput';
 import ColumnCountInput from 'Components/GameInfo/ColumnCountInput';
@@ -18,7 +18,7 @@ export default function GameInfo(props) {
         victoryText = (
             <VictoryText playerName={props.currentPlayersData[props.currentPlayer].name} playerNumber={props.currentPlayer} />
         );
-    } else if (GameUtils.isBoardFull(props.tiles)) {
+    } else if (BoardUtils.isBoardFull(props.tiles)) {
         victoryText = (
             <NoVictoryText />
         );

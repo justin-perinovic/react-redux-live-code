@@ -1,18 +1,17 @@
 import _ from 'lodash';
 import * as ActionTypes from 'Constants/ActionTypes';
-import * as GameUtils from 'Utils/GameUtils';
+import * as BoardUtils from 'Utils/BoardUtils';
 
 
-export function UpdateTiles(tiles, victoryTiles, switchPlayerControl) {
+export function UpdateTiles(tiles, switchPlayerControl) {
     return {
         type: ActionTypes.BOARD_UPDATE_TILES,
         tiles,
-        victoryTiles,
         switchPlayerControl
     }
 }
 
-export function AddToColumn(columnNumber) {
+function AddToColumn(columnNumber) {
     return (dispatch, getState) => {
         const gameInfoState = _.cloneDeep(getState().GameInfo);
         const boardState = _.cloneDeep(getState().Board);
@@ -20,7 +19,7 @@ export function AddToColumn(columnNumber) {
         const playerNumber = boardState.currentPlayer;
         const newTiles = _.cloneDeep(boardState.tiles);
 
-        if (GameUtils.isColumnFull(newTiles[columnNumber])) {
+        if (BoardUtils.isColumnFull(newTiles[columnNumber])) {
             throw new Error('Tried to add to full column');
         }
         
@@ -40,9 +39,22 @@ export function AddToColumn(columnNumber) {
         }
 
         const victoryRequirement = 2; // TODO: Remove
-        const victoryTiles = GameUtils.getVictoryTiles(victoryRequirement, playerNumber, tileVector.x, tileVector.y, newTiles)        
+        const victoryTiles = BoardUtils.getVictoryTiles(victoryRequirement, playerNumber, tileVector.x, tileVector.y, newTiles)        
         const shouldSwitchPlayerControl = (Object.keys(victoryTiles).length === 0);
 
         dispatch(UpdateTiles(newTiles, victoryTiles, shouldSwitchPlayerControl));
     }
+}
+
+export function claimTile(columnIndex, rowIndex) {
+    return (dispatch, getState) => {
+        const boardState = _.cloneDeep(getState().Board);
+
+        const newTiles = _.cloneDeep(boardState.tiles);
+        newTiles[columnIndex][rowIndex] = boardState.currentPlayer;
+
+        const shouldSwitchPlayerControl = true; // TODO: Fix
+
+        dispatch(UpdateTiles(newTiles, shouldSwitchPlayerControl));
+    };
 }

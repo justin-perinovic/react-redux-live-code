@@ -15,8 +15,8 @@ export default connect(
     },
     function mapDispatchToProps(dispatch) {
         return {
-            addTileToColumn: function(columnIndex) {
-                dispatch(BoardActions.AddToColumn(columnIndex));
+            claimTile: function(columnIndex, rowIndex) {
+                dispatch(BoardActions.claimTile(columnIndex, rowIndex));
             }
         }
     }

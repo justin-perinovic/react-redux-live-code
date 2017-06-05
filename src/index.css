@@ -80,6 +80,14 @@ body, div, p, span, ol, ul, li, h1, h2, h3, h4, h5, h6 {
   margin-right: auto;
 }
 
+.side.active {
+  cursor: pointer;
+}
+
+.side.unclaimed {
+  background-color: transparent;
+}
+
 .side.top, .side.bottom {
   width: 85px;
 }

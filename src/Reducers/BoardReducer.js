@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import * as GameUtils from 'Utils/GameUtils';
+import * as BoardUtils from 'Utils/BoardUtils';
 import * as ActionTypes from 'Constants/ActionTypes';
 import getInitialState from 'Reducers/InitialStates/BoardInitialState';
 
@@ -10,7 +10,7 @@ export default function(state = getInitialState(), action) {
         case ActionTypes.RESTART_GAME:
             return {
                 ...getInitialState(),
-                tiles: GameUtils.getFreshGameBoard(
+                tiles: BoardUtils.getFreshGameBoard(
                     action.nextGameSettings.columnCount,
                     action.nextGameSettings.rowCount,
                 )
@@ -19,15 +19,12 @@ export default function(state = getInitialState(), action) {
         case ActionTypes.BOARD_UPDATE_TILES:
             const newState = _.cloneDeep(state);
             newState.tiles = action.tiles;
-            newState.victoryTiles = action.victoryTiles;
 
             if (action.switchPlayerControl) {
                 newState.currentPlayer = (newState.currentPlayer === 1) ? 2 : 1;
             }
 
-            if (!_.isEmpty(action.victoryTiles)) {
-                newState.isWinnerFound = true;
-            }
+            newState.isWinnerFound = false; // TODO: Fix
 
             return newState;
 

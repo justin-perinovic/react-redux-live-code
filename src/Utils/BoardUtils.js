@@ -1,5 +1,49 @@
 import _ from 'lodash';
+import * as Sides from 'Constants/Sides';
 
+
+function handleUnrecognizedSide(side) {
+    const recognizedSides = [
+        Sides.LEFT,
+        Sides.RIGHT,
+        Sides.TOP,
+        Sides.BOTTOM
+    ];
+
+    if (recognizedSides.indexOf(side) === -1) {
+        throw new Error(`Unrecognized side: ${side}`);
+    }
+}
+
+export function getOffsetX(side) {
+    handleUnrecognizedSide(side);
+
+    if (side === Sides.TOP || side === Sides.BOTTOM) {
+        return 1;
+    } else if (side === Sides.RIGHT) {
+        return 2;
+    } else {
+        return 0;
+    }
+}
+
+export function getOffsetY(side) {
+    handleUnrecognizedSide(side);
+    
+    if (side === Sides.BOTTOM) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+export function getOwningPlayerNumber(columnI, rowI, side, board) {
+    handleUnrecognizedSide(side);
+
+    const x = columnI + getOffsetX(side);
+    const y = rowI + getOffsetY(side);
+    return board[x][y];
+}
 
 export function getVictoryTiles(victoryRequirement, playerNumber, baseX, baseY, board) {
     function shiftHorizontal(multiplier, distance, vector) {
