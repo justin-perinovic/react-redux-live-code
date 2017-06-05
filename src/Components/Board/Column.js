@@ -48,6 +48,7 @@ class Column extends React.Component {
                     rowNum={rowI}
                     colNum={this.props.columnIndex}
                     claimTile={this.props.claimTile}
+                    owningPlayerNumber={this.props.claimedSquares[rowI]}
                 />
             )
         }
@@ -69,11 +70,12 @@ class Column extends React.Component {
 
 Column.propTypes = {
     claimTile: React.PropTypes.func.isRequired,
+    claimedSquares: React.PropTypes.objectOf(React.PropTypes.number).isRequired,
     tiles: React.PropTypes.object.isRequired,
     rowCount: React.PropTypes.number.isRequired,
     columnIndex: React.PropTypes.number.isRequired,
     isLastColumn: React.PropTypes.bool.isRequired,
-    isGameComplete: React.PropTypes.bool.isRequired,
+    isGameComplete: React.PropTypes.bool.isRequired,    
 };
 
 

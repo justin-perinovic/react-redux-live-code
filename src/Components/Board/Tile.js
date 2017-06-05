@@ -41,8 +41,6 @@ function Tile(props) {
     }
 
 
-    const tileClasses = ['tile'];
-
     const renderedCorners = [
         renderCorner(Corners.TOP_LEFT)
     ];
@@ -63,6 +61,13 @@ function Tile(props) {
         renderedSides.push(renderSide(Sides.BOTTOM));        
     }
 
+    
+    const tileClasses = ['tile'];
+    if (props.owningPlayerNumber) {
+        tileClasses.push(`player${props.owningPlayerNumber}Background`);
+    }
+
+    
     return (
         <div className={tileClasses.join(' ')}>
             {renderedCorners}
@@ -77,6 +82,7 @@ Tile.propTypes = {
     tiles: React.PropTypes.object.isRequired,
     rowNum: React.PropTypes.number.isRequired,
     colNum: React.PropTypes.number.isRequired,
+    owningPlayerNumber: React.PropTypes.number
 };
 
 

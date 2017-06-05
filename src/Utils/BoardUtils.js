@@ -2,14 +2,15 @@ import _ from 'lodash';
 import * as Sides from 'Constants/Sides';
 
 
-function handleUnrecognizedSide(side) {
-    const recognizedSides = [
-        Sides.LEFT,
-        Sides.RIGHT,
-        Sides.TOP,
-        Sides.BOTTOM
-    ];
+// TODO: Put this somewhere else
+const recognizedSides = [
+    Sides.LEFT,
+    Sides.RIGHT,
+    Sides.TOP,
+    Sides.BOTTOM
+];
 
+function handleUnrecognizedSide(side) {
     if (recognizedSides.indexOf(side) === -1) {
         throw new Error(`Unrecognized side: ${side}`);
     }
@@ -45,7 +46,7 @@ export function getOwningPlayerNumber(columnI, rowI, side, board) {
     return board[x][y];
 }
 
-export function getVictoryTiles(victoryRequirement, playerNumber, baseX, baseY, board) {
+export function getNewlyClaimedTiles(victoryRequirement, playerNumber, baseX, baseY, board) {
     function shiftHorizontal(multiplier, distance, vector) {
         return {
             x: vector.x + (multiplier * distance),
@@ -143,16 +144,47 @@ export function getVictoryTiles(victoryRequirement, playerNumber, baseX, baseY, 
     return victoryTiles;
 }
 
-export function isColumnFull(columnData) {
-    return (columnData[0] !== 0);
+export function getClaimedSquares(colCount, rowCount, board) {
+    const claimedSquares = {};
+    for (let colI = 0; colI < colCount; colI++) {
+        const baseDataIndexX = (colI * 2);
+
+        claimedSquares[colI] = {};
+
+        for (let rowI = 0; rowI < rowCount; rowI++) {
+            const baseDataIndexY = rowI;
+
+            let potentialSquareOwnerNumber = null;
+            let ownerFound = true;
+
+            recognizedSides.forEach((side) => {
+                let tileOwnerNumber = getOwningPlayerNumber(baseDataIndexX, baseDataIndexY, side, board);
+
+                if (potentialSquareOwnerNumber === null) {
+                    potentialSquareOwnerNumber = tileOwnerNumber;
+                } else if (
+                    tileOwnerNumber === 0
+                    || potentialSquareOwnerNumber !== tileOwnerNumber
+                ) {
+                    ownerFound = false;
+                }
+            });
+
+            claimedSquares[colI][rowI] = (ownerFound ? potentialSquareOwnerNumber : 0);
+        }
+    }
+
+    return claimedSquares;
 }
 
 export function isBoardFull(boardData) {
     let foundEmptyColumn = false;
     _.forEach(boardData, (columnData) => {
-        if (!isColumnFull(columnData)) {
-            foundEmptyColumn = true;
-        }
+        _.forEach(columnData, (ownerNumber) => {
+            if (ownerNumber === 0) {
+                foundEmptyColumn = true;
+            }
+        });
     });
 
     return (!foundEmptyColumn);
@@ -162,6 +194,7 @@ export function getFreshGameBoard(columnCount, rowCount) {
     const tiles = {};
     for (let col = 0; col < ((columnCount*2)+1); col++) {
         tiles[col] = {};
+
         for (let row = 0; row < (rowCount+1); row++) {
             tiles[col][row] = 0;
         }

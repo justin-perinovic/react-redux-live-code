@@ -74,6 +74,7 @@ body, div, p, span, ol, ul, li, h1, h2, h3, h4, h5, h6 {
 }
 
 .side {
+  border: 1px solid black;
   left: 0;
   right: 0;
   margin-left: auto;

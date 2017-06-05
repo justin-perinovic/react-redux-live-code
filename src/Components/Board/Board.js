@@ -1,10 +1,17 @@
 import _ from 'lodash';
 import React from 'react';
 import Column from 'Components/Board/Column';
+import * as BoardUtils from 'Utils/BoardUtils';
 
 
 function Board(props) {
     const columns = [];
+
+    const claimedSquares = BoardUtils.getClaimedSquares(
+        props.columnCount,
+        props.rowCount,
+        props.tiles
+    );
 
     const lastColumnIndex = (props.columnCount - 1);
     for (let colI = 0; colI <= lastColumnIndex; colI++) {
@@ -19,6 +26,7 @@ function Board(props) {
                 tiles={props.tiles}
                 rowCount={props.rowCount}
                 claimTile={props.claimTile}
+                claimedSquares={claimedSquares[colI]}
             />
         )
     }
