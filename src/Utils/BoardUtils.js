@@ -138,6 +138,18 @@ export function getWinner(claimedSquares) {
     return null;
 }
 
+export function getInitialClaimedSquares(columnCount, rowCount) {
+    const claimedSquares = {};
+    for (let colI = 0; colI < columnCount; colI++) {
+        claimedSquares[colI] = {};
+        for (let rowI = 0; rowI < rowCount; rowI++) {
+            claimedSquares[colI][rowI] = 0;
+        }
+    }
+
+    return claimedSquares;
+}
+
 export function getFreshGameBoard(columnCount, rowCount) {
     const tiles = {};
     for (let col = 0; col < ((columnCount*2)+1); col++) {

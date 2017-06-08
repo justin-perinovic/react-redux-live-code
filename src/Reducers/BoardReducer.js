@@ -8,13 +8,22 @@ let statePatch;
 export default function(state = getInitialState(), action) {
     switch (action.type) {
         case ActionTypes.RESTART_GAME:
+            const {columnCount, rowCount} = action.nextGameSettings;
+
             const tiles = BoardUtils.getFreshGameBoard(
-                action.nextGameSettings.columnCount,
-                action.nextGameSettings.rowCount,
+                columnCount,
+                rowCount,
             );
+
+            const claimedSquares = BoardUtils.getInitialClaimedSquares(
+                columnCount,
+                rowCount
+            );
+
             return {
                 ...getInitialState(),
-                tiles
+                tiles,
+                claimedSquares
             };
 
         case ActionTypes.BOARD_UPDATE_TILES:
