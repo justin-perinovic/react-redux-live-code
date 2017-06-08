@@ -10,7 +10,7 @@ function Tile(props) {
         null
     );
 }
- 
+
 Tile.propTypes = {
     sides: React.PropTypes.objectOf(React.PropTypes.number).isRequired,
     claimTile: React.PropTypes.func.isRequired,
