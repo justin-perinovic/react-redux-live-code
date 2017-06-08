@@ -8,7 +8,7 @@ function Board(props) {
     const columns = [];
 
     const claimedSquares = props.claimedSquares;
-
+console.log(_.cloneDeep(props))
     const lastColumnIndex = (props.columnCount - 1);
     for (let colI = 0; colI <= lastColumnIndex; colI++) {
         const isLastColumn = Boolean(colI === lastColumnIndex);
@@ -24,6 +24,7 @@ function Board(props) {
                 claimTile={props.claimTile}
                 claimedSquares={claimedSquares[colI]}
                 players={props.players}
+                winner={BoardUtils.getWinner(claimedSquares)}
             />
         )
     }

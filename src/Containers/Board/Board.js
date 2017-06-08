@@ -7,7 +7,6 @@ export default connect(
     function mapStateToProps(state) {
         return {
             tiles: state.Board.tiles,
-            isWinnerFound: state.Board.isWinnerFound,
             claimedSquares: state.Board.claimedSquares,
             rowCount: state.GameInfo.currentGame.rowCount,
             columnCount: state.GameInfo.currentGame.columnCount,

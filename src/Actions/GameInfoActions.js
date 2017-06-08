@@ -12,7 +12,7 @@ export function UpdatePlayerName(playerNumber, playerName) {
 export function UpdateColumnCount(columnCount) {
     return {
         type: ActionTypes.GAME_INFO_UPDATE_COLUMN_COUNT,
-        columnCount
+        columnCount: parseInt(columnCount, 10)
     };
 };
 

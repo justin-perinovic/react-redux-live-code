@@ -23,26 +23,7 @@ export default function GameInfo(props) {
             props.tiles
         )
     ) {
-        const scores = {
-            1: 0,
-            2: 0
-        };
-        _.forEach(props.claimedSquares, (claimedSquares, claimedSquareX) => {
-            _.forEach(claimedSquares, (playerNumber) => {
-                if (playerNumber) {
-                    scores[playerNumber] += 1;
-                }
-            });
-        });
-
-        const winner = (() => {
-            if (scores[1] > scores[2]) {
-                return 1;
-            } else if (scores[2] > scores[1]) {
-                return 2;
-            }
-            return null;
-        })();
+        const winner = BoardUtils.getWinner(props.claimedSquares);
         if (winner) {
             currentPlayerText = (
                 <VictoryText

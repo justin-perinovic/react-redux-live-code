@@ -27,8 +27,6 @@ export default function(state = getInitialState(), action) {
                 newState.currentPlayer = (newState.currentPlayer === 1) ? 2 : 1;
             }
 
-            newState.isWinnerFound = false; // TODO: Fix
-
             return newState;
 
         default:

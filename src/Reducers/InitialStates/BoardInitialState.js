@@ -6,8 +6,8 @@ import * as BoardUtils from 'Utils/BoardUtils';
 export default function getInitialState() {
     const gameInfo = getGameInfoInitialState();
 
-    const columnCount = gameInfo.currentGame.columnCount;
-    const rowCount = gameInfo.currentGame.rowCount;
+    const columnCount = gameInfo.nextGame.columnCount;
+    const rowCount = gameInfo.nextGame.rowCount;
 
     const tiles = BoardUtils.getFreshGameBoard(columnCount, rowCount);
 
@@ -18,11 +18,10 @@ export default function getInitialState() {
             claimedSquares[colI][rowI] = 0;
         }
     }
-
+console.log('claimedSquares', claimedSquares)
     return {
         tiles,
         claimedSquares,
-        currentPlayer: 1,
-        isWinnerFound: false,
+        currentPlayer: 1
     }
 };

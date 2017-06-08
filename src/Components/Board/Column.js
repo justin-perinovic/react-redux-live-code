@@ -40,6 +40,10 @@ class Column extends React.Component {
                 sides[Sides.RIGHT] = getOwner(Sides.RIGHT);
             }
 
+            const owningPlayerNumber = this.props.claimedSquares[rowI];
+
+            const isLosingSquare = Boolean(this.props.winner !== owningPlayerNumber);
+            
             tiles.push(
                 <Tile
                     key={rowI}
@@ -48,7 +52,8 @@ class Column extends React.Component {
                     rowNum={rowI}
                     colNum={this.props.columnIndex}
                     claimTile={this.props.claimTile}
-                    owningPlayerNumber={this.props.claimedSquares[rowI]}
+                    owningPlayerNumber={owningPlayerNumber}
+                    isLosingSquare={isLosingSquare}
                     players={this.props.players}
                 />
             )
@@ -77,6 +82,7 @@ Column.propTypes = {
     columnIndex: React.PropTypes.number.isRequired,
     isLastColumn: React.PropTypes.bool.isRequired,
     isGameComplete: React.PropTypes.bool.isRequired,
+    winner: React.PropTypes.bool,
     players: React.PropTypes.object.isRequired
 };
 

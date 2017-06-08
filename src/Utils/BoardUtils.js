@@ -106,6 +106,38 @@ export function isBoardFull(colCount, rowCount, boardData) {
     return (!areSquaresUnclaimed);
 }
 
+export function getWinner(claimedSquares) {
+    const scores = {
+        1: 0,
+        2: 0
+    };
+    _.forEach(claimedSquares, (claim, claimedSquareX) => {
+        const addPointForPlayer = (playerNumber) => {
+            if (playerNumber) {
+                scores[playerNumber] += 1;
+            }
+        };
+
+        if (_.isPlainObject(claim)) {
+            // claimedSquares is full board
+            _.forEach(claim, (playerNumber) => {
+                addPointForPlayer(playerNumber);
+            });
+        } else {
+            // claimedSquares is single column
+            addPointForPlayer(claim);
+        }
+        
+    });
+
+    if (scores[1] > scores[2]) {
+        return 1;
+    } else if (scores[2] > scores[1]) {
+        return 2;
+    }
+    return null;
+}
+
 export function getFreshGameBoard(columnCount, rowCount) {
     const tiles = {};
     for (let col = 0; col < ((columnCount*2)+1); col++) {

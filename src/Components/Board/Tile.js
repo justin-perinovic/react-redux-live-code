@@ -64,8 +64,14 @@ function Tile(props) {
 
     const tileClasses = ['tile'];
     let firstPlayerLetter = null;
+    let background = null;
     if (props.owningPlayerNumber) {
-        tileClasses.push(`player${props.owningPlayerNumber}Background`);
+        background = <div className={`player${props.owningPlayerNumber}Background background`}></div>;
+
+        if (props.isLosingSquare) {
+            tileClasses.push('unwinningTile')
+        }
+
         firstPlayerLetter = (
             <div className="firstPlayerLetter">
               {props.players[props.owningPlayerNumber].name[0].toUpperCase()}
@@ -76,6 +82,7 @@ function Tile(props) {
 
     return (
         <div className={tileClasses.join(' ')}>
+            {background}
             {firstPlayerLetter}
             {renderedSides}
             {renderedCorners}
@@ -90,7 +97,8 @@ Tile.propTypes = {
     rowNum: React.PropTypes.number.isRequired,
     colNum: React.PropTypes.number.isRequired,
     owningPlayerNumber: React.PropTypes.number,
-    players: React.PropTypes.object.isRequired
+    players: React.PropTypes.object.isRequired,
+    isLosingSquare: React.PropTypes.bool.isRequired
 };
 
 
