@@ -7,11 +7,11 @@ export default connect(
     function mapStateToProps(state) {
         return {
             tiles: state.Board.tiles,
-            victoryTiles: state.Board.victoryTiles,
             isWinnerFound: state.Board.isWinnerFound,
+            claimedSquares: state.Board.claimedSquares,
             rowCount: state.GameInfo.currentGame.rowCount,
             columnCount: state.GameInfo.currentGame.columnCount,
-            players: state.GameInfo.currentGame.players
+            players: state.GameInfo.currentGame.players,
         }
     },
     function mapDispatchToProps(dispatch) {

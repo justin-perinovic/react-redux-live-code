@@ -7,11 +7,7 @@ import * as BoardUtils from 'Utils/BoardUtils';
 function Board(props) {
     const columns = [];
 
-    const claimedSquares = BoardUtils.getClaimedSquares(
-        props.columnCount,
-        props.rowCount,
-        props.tiles
-    );
+    const claimedSquares = props.claimedSquares;
 
     const lastColumnIndex = (props.columnCount - 1);
     for (let colI = 0; colI <= lastColumnIndex; colI++) {

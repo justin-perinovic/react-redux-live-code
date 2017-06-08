@@ -7,10 +7,12 @@ import * as GameInfoActions from 'Actions/GameInfoActions';
 export default connect(
     function mapStateToProps(state) {
         return {
-            gameInfo: state.GameInfo.nextGame,
+            nextGameInfo: state.GameInfo.nextGame,
+            currentGameInfo: state.GameInfo.currentGame,
             currentPlayersData: state.GameInfo.currentGame.players,
             currentPlayer: state.Board.currentPlayer,
             isWinnerFound: state.Board.isWinnerFound,
+            claimedSquares: state.Board.claimedSquares,
             tiles: state.Board.tiles
         }
     },

@@ -3,10 +3,11 @@ import * as ActionTypes from 'Constants/ActionTypes';
 import * as BoardUtils from 'Utils/BoardUtils';
 
 
-export function UpdateTiles(tiles, switchPlayerControl) {
+export function UpdateTiles(tiles, claimedSquares, switchPlayerControl) {
     return {
         type: ActionTypes.BOARD_UPDATE_TILES,
         tiles,
+        claimedSquares,
         switchPlayerControl
     }
 }
@@ -16,13 +17,25 @@ export function claimTile(columnIndex, rowIndex) {
         const boardState = _.cloneDeep(getState().Board);
         const gameInfoState = _.cloneDeep(getState().GameInfo).currentGame;
 
-        const newTiles = _.cloneDeep(boardState.tiles);
-        newTiles[columnIndex][rowIndex] = boardState.currentPlayer;
+        const currentPlayer = boardState.currentPlayer;
+
+        const oldTiles = boardState.tiles;
+        const newTiles = _.cloneDeep(oldTiles);
+        newTiles[columnIndex][rowIndex] = currentPlayer;
         
-        console.log(BoardUtils.getClaimedSquares(gameInfoState.columnCount, gameInfoState.rowCount, newTiles));
+        const newlyClaimedSquares =  BoardUtils.getNewlyClaimedSquares(
+            columnIndex, rowIndex, gameInfoState.columnCount, gameInfoState.rowCount, oldTiles, newTiles
+        );
 
-        const shouldSwitchPlayerControl = true; // TODO: Fix
+        const claimedSquares = _.cloneDeep(boardState.claimedSquares);
+        _.forEach(newlyClaimedSquares, (columnClaims, newClaimX) => {
+            Object.keys(columnClaims).forEach((newClaimY) => {
+                claimedSquares[newClaimX][newClaimY] = currentPlayer;
+            });
+        });
 
-        dispatch(UpdateTiles(newTiles, shouldSwitchPlayerControl));
+        const shouldSwitchPlayerControl = !Boolean(Object.keys(newlyClaimedSquares).length);
+        
+        dispatch(UpdateTiles(newTiles, claimedSquares, shouldSwitchPlayerControl));
     };
 }

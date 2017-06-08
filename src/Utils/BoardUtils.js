@@ -46,105 +46,27 @@ export function getOwningPlayerNumber(columnI, rowI, side, board) {
     return board[x][y];
 }
 
-export function getNewlyClaimedTiles(victoryRequirement, playerNumber, baseX, baseY, board) {
-    function shiftHorizontal(multiplier, distance, vector) {
-        return {
-            x: vector.x + (multiplier * distance),
-            y: vector.y
-        }
-    }
-    function shiftVertical(multiplier, distance, vector) {
-        return {
-            x: vector.x,
-            y: vector.y + (multiplier * distance)
-        }
-    }
+// TODO: Make this way more efficient
+export function getNewlyClaimedSquares(moveX, moveY, colCount, rowCount, oldBoard, newBoard) {
+    const oldClaimedSquares = getClaimedSquares(colCount, rowCount, oldBoard);
+    const newClaimedSquares = getClaimedSquares(colCount, rowCount, newBoard);
 
-    function tileBelongsToPlayer(vector) {
-        const x = vector.x;
-        const y = vector.y;
-        
-        if (
-            board[x]
-            && board[x][y]
-            && board[x][y] === playerNumber
-        ) {
-            return true;
-        }
-        
-        return false;
-    }
-
-
-    let victoryTiles = {};
-    const baseVector = {x: parseInt(baseX, 10), y: parseInt(baseY, 10)};
-
-    // Short out if function was eroneously called on tile not belonging to player
-    if (!tileBelongsToPlayer(baseVector)) {
-        return victoryTiles;
-    }
-
-    
-    const routineSets = [
-        [
-            [shiftHorizontal.bind(this, -1)],
-            [shiftHorizontal.bind(this, 1)]
-        ],
-        [
-            [shiftVertical.bind(this, -1)],
-            [shiftVertical.bind(this, 1)]
-        ],
-        [
-            [shiftHorizontal.bind(this, -1), shiftVertical.bind(this, -1)],
-            [shiftHorizontal.bind(this, 1), shiftVertical.bind(this, 1)],
-        ],
-        [
-            [shiftHorizontal.bind(this, -1), shiftVertical.bind(this, 1)],
-            [shiftHorizontal.bind(this, 1), shiftVertical.bind(this, -1)],
-        ]
-    ];
-
-    routineSets.forEach((_routineSet) => {
-        let routineSet = _routineSet.slice();
-
-        let playerTiles = {};
-        playerTiles[baseVector.x] = {[baseVector.y]: true};
-
-        let playerTilesCount = 1;
-
-        let distance = 1;
-        while (routineSet.length) {
-            const newRoutineSet = [];
-
-            routineSet.forEach((subroutineSet) => {
-                let runningVector = _.clone(baseVector);
-                
-                subroutineSet.forEach((subroutine) => {
-                    runningVector = subroutine(distance, runningVector);
-                });
-
-                if (tileBelongsToPlayer(runningVector)) {
-                    newRoutineSet.push(subroutineSet);
-                    if (!_.has(playerTiles, [runningVector.x, runningVector.y])) {
-                        playerTiles = _.merge(playerTiles, {[runningVector.x]: {[runningVector.y]: true}});
-                        playerTilesCount += 1;
-                    }
+    const newlyClaimedTiles = {};
+    _.forEach(newClaimedSquares, (columnClaimedSquares, columnIndex) => {
+        _.forEach(columnClaimedSquares, (isClaimed, rowIndex) => {
+            if (isClaimed && !oldClaimedSquares[columnIndex][rowIndex]) {
+                if (!newlyClaimedTiles[columnIndex]) {
+                    newlyClaimedTiles[columnIndex] = {};
                 }
-            });
-
-            routineSet = newRoutineSet;
-            distance += 1;
-        }
-
-        if (playerTilesCount >= victoryRequirement) {
-            victoryTiles = _.merge(victoryTiles, playerTiles);
-        }
+                newlyClaimedTiles[columnIndex][rowIndex] = true;
+            }
+        });
     });
 
-    return victoryTiles;
+    return newlyClaimedTiles;
 }
 
-export function getClaimedSquares(colCount, rowCount, board) {
+function getClaimedSquares(colCount, rowCount, board) {
     const claimedSquares = {};
     for (let colI = 0; colI < colCount; colI++) {
         const baseDataIndexX = (colI * 2);
@@ -154,40 +76,34 @@ export function getClaimedSquares(colCount, rowCount, board) {
         for (let rowI = 0; rowI < rowCount; rowI++) {
             const baseDataIndexY = rowI;
 
-            let potentialSquareOwnerNumber = null;
-            let ownerFound = true;
-
+            let isClaimed = true;
             recognizedSides.forEach((side) => {
-                let tileOwnerNumber = getOwningPlayerNumber(baseDataIndexX, baseDataIndexY, side, board);
-
-                if (potentialSquareOwnerNumber === null) {
-                    potentialSquareOwnerNumber = tileOwnerNumber;
-                } else if (
-                    tileOwnerNumber === 0
-                    || potentialSquareOwnerNumber !== tileOwnerNumber
-                ) {
-                    ownerFound = false;
+                const tileOwner = getOwningPlayerNumber(baseDataIndexX, baseDataIndexY, side, board);
+                if (!tileOwner) {
+                    isClaimed = false;
                 }
             });
 
-            claimedSquares[colI][rowI] = (ownerFound ? potentialSquareOwnerNumber : 0);
+            claimedSquares[colI][rowI] = isClaimed;
         }
     }
 
     return claimedSquares;
 }
 
-export function isBoardFull(boardData) {
-    let foundEmptyColumn = false;
-    _.forEach(boardData, (columnData) => {
-        _.forEach(columnData, (ownerNumber) => {
-            if (ownerNumber === 0) {
-                foundEmptyColumn = true;
-            }
-        });
-    });
+export function isBoardFull(colCount, rowCount, boardData) {
+    const claimedSquares = getClaimedSquares(colCount, rowCount, boardData);
 
-    return (!foundEmptyColumn);
+    let areSquaresUnclaimed = false;
+    for (let colI = 0; colI < colCount; colI++) {
+        for (let rowI = 0; rowI < rowCount; rowI++) {
+            if (!claimedSquares[colI][rowI]) {
+                areSquaresUnclaimed = true;
+            }
+        }
+    }
+
+    return (!areSquaresUnclaimed);
 }
 
 export function getFreshGameBoard(columnCount, rowCount) {
