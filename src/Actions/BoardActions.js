@@ -4,7 +4,14 @@ import * as BoardUtils from 'Utils/BoardUtils';
 
 
 export function UpdateTiles(tiles, claimedSquares, switchPlayerControl) {
-    throw new Error("BoardActions.UpdateTiles not implemented yet!");
+    return {
+        type: ActionTypes.BOARD_UPDATE_TILES,
+        payload: {
+            tiles,
+            claimedSquares,
+            switchPlayerControl
+        }
+    };
 }
 
 export function claimTile(columnIndex, rowIndex) {
