@@ -59,7 +59,7 @@ body, div, p, span, ol, ul, li, h1, h2, h3, h4, h5, h6 {
   float:left;
 }
 
-.tile {
+.square {
   position: relative;
   width: 90px;
   height: 90px;
@@ -120,7 +120,7 @@ body, div, p, span, ol, ul, li, h1, h2, h3, h4, h5, h6 {
 }
 
 
-.column.selected .tile {
+.column.selected .square {
   opacity: .6;
   cursor: pointer;
 }
@@ -139,7 +139,7 @@ body, div, p, span, ol, ul, li, h1, h2, h3, h4, h5, h6 {
    background-color: white;
 }
 
-.unwinningTile .hole {
+.losingSquare .hole {
   background-color: lightgray;
 }
 
@@ -150,10 +150,10 @@ body, div, p, span, ol, ul, li, h1, h2, h3, h4, h5, h6 {
   height: 100%;
 }
 
-.unwinningTile .player1Background.background {
+.losingSquare .player1Background.background {
   opacity: .5;
 }
-.unwinningTile .player2Background.background {
+.losingSquare .player2Background.background {
   opacity: .4;
 }
 
