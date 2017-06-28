@@ -1,10 +1,10 @@
 const getInitialStateBranch = () => ({
     players: {
         1: {
-            name: 'Player One'
+            name: 'Jessica'
         },
         2: {
-            name: 'Player Two'
+            name: 'Michael'
         }
     },
     columnCount: 3,
