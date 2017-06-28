@@ -1,17 +1,17 @@
 import React from 'react';
 import * as Corners from 'Constants/Corners'
 import * as Sides from 'Constants/Sides'
-import Corner from 'Components/Board/Tile/Corner';
-import Side from 'Components/Board/Tile/Side';
+import Corner from 'Components/Board/Square/Corner';
+import Side from 'Components/Board/Square/Side';
 import * as BoardUtils from 'Utils/BoardUtils';
 
-function Tile(props) {
-    return(
+function Square(props) {
+    return (
         null
-    );
+    )
 }
 
-Tile.propTypes = {
+Square.propTypes = {
     sides: React.PropTypes.objectOf(React.PropTypes.number).isRequired,
     claimTile: React.PropTypes.func.isRequired,
     tiles: React.PropTypes.object.isRequired,
@@ -23,4 +23,4 @@ Tile.propTypes = {
 };
 
 
-export default Tile;
+export default Square;

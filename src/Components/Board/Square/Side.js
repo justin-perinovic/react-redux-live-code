@@ -9,6 +9,10 @@ const sideClasses = {
 };
 
 class Side extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
     render() {
         return (
             null

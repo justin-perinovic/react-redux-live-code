@@ -2,7 +2,7 @@ import _ from 'lodash';
 import React from 'react';
 import * as Sides from 'Constants/Sides';
 import * as BoardUtils from 'Utils/BoardUtils';
-import Tile from 'Components/Board/Tile';
+import Square from 'Components/Board/Square';
 
 
 class Column extends React.Component {
@@ -45,7 +45,7 @@ class Column extends React.Component {
             const isLosingSquare = Boolean(this.props.winner !== owningPlayerNumber);
             
             tiles.push(
-                <Tile
+                <Square
                     key={rowI}
                     sides={sides}
                     tiles={this.props.tiles}
